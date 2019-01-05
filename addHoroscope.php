@@ -1,5 +1,5 @@
 <?php
 
-$_POST["birthday"]
+echo json_encode($_POST["birthday   "]);
 
 ?>
