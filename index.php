@@ -9,7 +9,7 @@
 <body>
 <form>
     <input type="date" name="birthday" value=""/>
-    <input type="submit" value="Submit"/>
+    <input type="submit" value="Spara mitt horoskop"/>
 </form>
 
     <?php
