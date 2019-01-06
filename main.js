@@ -1,5 +1,4 @@
 function addHoroscope() {
-    console.log('kaka0');
 
     var formData = new FormData();
     formData.append('birthday', document.getElementById('birthdayInput').value);
