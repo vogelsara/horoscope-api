@@ -1,3 +1,8 @@
+
+function viewHoroscope() {
+    
+}
+
 function addHoroscope() {
 
     var formData = new FormData();

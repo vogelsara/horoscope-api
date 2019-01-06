@@ -9,11 +9,13 @@
     <title>Document</title>
 </head>
 
-<body>
+<body onload="viewHoroscope()">
     <form>
         <input id="birthdayInput" type="date" name="birthday" value="1994-06-28" />
-        <input id="horoscope-input" type="text" name="horoscope-input" size="100" value="Test value"/>
-        <input type="button" value="Spara mitt horoskop" onclick="addHoroscope()"/>
+        <input id="horoscope-input" type="text" name="horoscope-input" size="100" value="Test value"/><br>
+        <input type="button" value="Spara mitt horoskop" onclick="addHoroscope()"/><br>
+        <input type="button" value="Uppdatera mitt horoskop" onclick=""/><br>
+        <input type="button" value="Radera mitt horoskop" onclick=""/>
     </form>
     <div id="horoscope-output">
     </div>
