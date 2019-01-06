@@ -13,7 +13,7 @@ function isHoroscopeAlreadySet($horoscope) {
     if (isset($_SESSION[$horoscope])) {
         return 1;
     } else {
-        return "RECECE";
+        return 0;
     }
 }
 

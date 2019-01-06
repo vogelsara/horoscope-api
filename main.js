@@ -8,16 +8,6 @@ function addHoroscope() {
             method: 'POST',
             credentials: 'include',
             body: formData
-        })
-        .then((response) => response.json())
-        .then((json) => {
-            console.log(json);
-            var horoscopeText = document.createElement('p');
-            horoscopeText.innerText = json;
-            document.getElementById('horoscope-output').appendChild(horoscopeText);
-        })
-        .catch((err) => {
-            console.log(err);
         });
         
 }
