@@ -2,12 +2,13 @@
 
 session_start();
 
-$currentHoroscope = calculeHoroscope($_GET["birthday"]);
+$currentHoroscope = calculateHoroscope($_GET["birthday"]);
 
-//echo $_SESSION[$currentHoroscope];
-echo json_encode($_GET);
+if(isset($_SESSION[$currentHoroscope])){
+    echo json_encode($_SESSION[$currentHoroscope]);
+}
 
-function calculeHoroscope($date) {
+function calculateHoroscope($date) {
     $subDate = substr($date, -5);
     if ("03-21" <= $subDate && $subDate <= "04-19") {
         return "aries";

@@ -2,7 +2,7 @@
 
 session_start();
 
-$currentHoroscope = calculeHoroscope($_POST["birthday"]);
+$currentHoroscope = calculateHoroscope($_POST["birthday"]);
 $horoscopeInputText = $_POST["horoscope-input"];
 
 if (isHoroscopeAlreadySet($currentHoroscope) == 0) {
@@ -17,7 +17,7 @@ function isHoroscopeAlreadySet($horoscope) {
     }
 }
 
-function calculeHoroscope($date) {
+function calculateHoroscope($date) {
     $subDate = substr($date, -5);
     if ("03-21" <= $subDate && $subDate <= "04-19") {
         return "aries";
