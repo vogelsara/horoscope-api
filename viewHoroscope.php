@@ -10,4 +10,6 @@ if(isset($_SESSION[$currentHoroscope])){
     echo json_encode($_SESSION[$currentHoroscope]);
 }
 
+traceSession();
+
 ?>

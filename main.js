@@ -28,6 +28,26 @@ function addHoroscope() {
             method: 'POST',
             credentials: 'include',
             body: formData
-        });
+        }).then(viewHoroscope());
+        
+}
+
+function updateHoroscope() {
+
+    var birthday = document.getElementById('birthdayInput').value;
+    var horoscopeText = document.getElementById('horoscope-input').value;
+
+    var queryString = "birthday="+birthday+"&horoscope-input="+horoscopeText;
+
+    fetch("/updateHoroscope.php", {
+            method: 'PUT',
+            credentials: 'include',
+            body: queryString
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            console.log(json);
+        })
+        .then(viewHoroscope());
         
 }

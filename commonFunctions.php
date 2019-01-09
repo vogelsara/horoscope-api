@@ -1,6 +1,20 @@
 <?php
 
+function traceAssocArray($assocArray) {
+    error_log("Values:");
+    foreach ($assocArray as $key => $value) {
+        error_log($key.": ".$value);
+    }
+}
+
+function traceSession() {
+    error_log("SESSION ---------->");
+    traceAssocArray($_SESSION);
+    error_log("SESSION <----------");
+}
+
 function calculateHoroscope($date) {
+
     $subDate = substr($date, -5);
     if ("03-21" <= $subDate && $subDate <= "04-19") {
         return "aries";
