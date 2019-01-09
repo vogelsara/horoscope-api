@@ -51,3 +51,22 @@ function updateHoroscope() {
         .then(viewHoroscope());
         
 }
+
+function deleteHoroscope() {
+    
+    var birthday = document.getElementById('birthdayInput').value;
+
+    var queryString = "birthday="+birthday;
+
+    fetch("/deleteHoroscope.php", {
+            method: 'DELETE',
+            credentials: 'include',
+            body: queryString
+        })
+        .then((res) => res.json())
+        .then((json) => {
+            console.log(json);
+        })
+        .then(viewHoroscope());
+        
+}

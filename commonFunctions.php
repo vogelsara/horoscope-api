@@ -1,7 +1,6 @@
 <?php
 
 function traceAssocArray($assocArray) {
-    error_log("Values:");
     foreach ($assocArray as $key => $value) {
         error_log($key.": ".$value);
     }
