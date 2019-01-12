@@ -15,7 +15,10 @@ function traceSession() {
 function calculateHoroscope($date) {
 
     $subDate = substr($date, -5);
-    if ("03-21" <= $subDate && $subDate <= "04-19") {
+
+    if ($date === "") {
+        return "no date specified";
+    } elseif ("03-21" <= $subDate && $subDate <= "04-19") {
         return "aries";
     } elseif ("04-20" <= $subDate && $subDate <= "05-20") {
         return "taurus";
