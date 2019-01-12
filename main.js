@@ -23,7 +23,7 @@ function addHoroscope() {
             method: 'POST',
             credentials: 'include',
             body: formData
-        }).then(viewHoroscope());
+        }).then(updateButtons());
 }
 
 function updateHoroscope() {
@@ -37,7 +37,7 @@ function updateHoroscope() {
             method: 'PUT',
             credentials: 'include',
             body: queryString
-        }).then(viewHoroscope());
+        }).then(updateButtons());
         
 }
 
@@ -54,7 +54,7 @@ function deleteHoroscope() {
         }).then((response) => response.json())
         .then((json) => {
             if (json) {
-                viewHoroscope();
+                updateButtons();
             }
         });
         
@@ -81,5 +81,6 @@ function updateButtons() {
                 updateHoroscopeButton.disabled = false;
                 deleteHoroscopeButton.disabled = false;
             }
+            viewHoroscope();
         });
 }
