@@ -9,13 +9,9 @@ function viewHoroscope() {
         })
         .then((response) => response.json())
         .then((json) => {
-            console.log(json);
             var horoscopeText = document.createElement('p');
             horoscopeText.innerText = json;
             document.getElementById('horoscope-output').appendChild(horoscopeText);
-        })
-        .catch((err) => {
-            console.log(err);
         });
 }
 
@@ -43,12 +39,7 @@ function updateHoroscope() {
             method: 'PUT',
             credentials: 'include',
             body: queryString
-        })
-        .then((res) => res.json())
-        .then((json) => {
-            console.log(json);
-        })
-        .then(viewHoroscope());
+        }).then(viewHoroscope());
         
 }
 
@@ -62,11 +53,6 @@ function deleteHoroscope() {
             method: 'DELETE',
             credentials: 'include',
             body: queryString
-        })
-        .then((res) => res.json())
-        .then((json) => {
-            console.log(json);
-        })
-        .then(viewHoroscope());
+        }).then(viewHoroscope());
         
 }
