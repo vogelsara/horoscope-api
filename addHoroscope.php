@@ -9,6 +9,9 @@ $horoscopeInputText = $_POST["horoscope-input"];
 
 if (isHoroscopeAlreadySet($currentHoroscope) == 0) {
     $_SESSION[$currentHoroscope] = $horoscopeInputText;
+    echo json_encode(true);
+} else {
+    echo json_encode(false);
 }
 
 function isHoroscopeAlreadySet($horoscope) {
