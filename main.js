@@ -52,6 +52,11 @@ function deleteHoroscope() {
             method: 'DELETE',
             credentials: 'include',
             body: queryString
-        }).then(viewHoroscope());
+        }).then((response) => response.json())
+        .then((json) => {
+            if (json) {
+                viewHoroscope();
+            }
+        });
         
 }
