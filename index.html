@@ -5,19 +5,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Fjalla+One|Inconsolata:400,700&amp;subset=latin-ext" rel="stylesheet">
     <script src="main.js"></script>
-    <title>Document</title>
+    <title>Horoscope</title>
 </head>
 
 <body onload="viewHoroscope()">
     <form>
-        <input id="birthdayInput" type="date" name="birthday" value="" />
-        <input id="horoscope-input" type="text" name="horoscope-input" size="100" value=""/><br>
-        <input type="button" value="Spara mitt horoskop" onclick="addHoroscope()"/><br>
-        <input type="button" value="Uppdatera mitt horoskop" onclick="updateHoroscope()"/><br>
-        <input type="button" value="Radera mitt horoskop" onclick="deleteHoroscope()"/>
+        <input id="birthdayInput" type="date" name="birthday" value="" /><br>
+        <textarea id="horoscope-input" type="text" name="horoscope-input" cols="50" rows="8" placeholder="You can type your future here..." value="" ></textarea><br>
+        <input class="button" type="button" value="Spara mitt horoskop" onclick="addHoroscope()" /><br>
+        <input class="button" type="button" value="Uppdatera mitt horoskop" onclick="updateHoroscope()" /><br>
+        <input class="button" type="button" value="Radera mitt horoskop" onclick="deleteHoroscope()" /><br>
     </form>
-    <div>
+    <div id="output-text">
         <p id="horoscope-output"></p>
     </div>
 </body>
