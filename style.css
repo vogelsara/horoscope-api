@@ -30,6 +30,10 @@ html {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
   }
 
+  .button:disabled{
+      background-color: rgb(157, 160, 165, 0.5);
+  }
+
   #birthdayInput, #horoscope-input{
       margin-bottom: 1.5em;
       background-color:rgba(255, 255, 255, 0.5);

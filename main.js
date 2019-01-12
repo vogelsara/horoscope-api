@@ -24,7 +24,6 @@ function addHoroscope() {
             credentials: 'include',
             body: formData
         }).then(viewHoroscope());
-        
 }
 
 function updateHoroscope() {
@@ -59,4 +58,28 @@ function deleteHoroscope() {
             }
         });
         
+}
+
+function updateButtons() {
+    var birthday = document.getElementById('birthdayInput').value;
+
+    fetch("/viewHoroscope.php?birthday="+birthday, {
+            method: 'GET',
+            credentials: 'include'
+        })
+        .then((response) => response.json())
+        .then((json) => {
+            var addHoroscopeButton = document.getElementById('addHoroscopeButton');
+            var updateHoroscopeButton = document.getElementById('updateHoroscopeButton');
+            var deleteHoroscopeButton = document.getElementById('deleteHoroscopeButton');
+            if (json == "") {
+                addHoroscopeButton.disabled = false;
+                updateHoroscopeButton.disabled = true;
+                deleteHoroscopeButton.disabled = true;
+            } else {
+                addHoroscopeButton.disabled = true;
+                updateHoroscopeButton.disabled = false;
+                deleteHoroscopeButton.disabled = false;
+            }
+        });
 }
