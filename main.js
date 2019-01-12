@@ -9,9 +9,8 @@ function viewHoroscope() {
         })
         .then((response) => response.json())
         .then((json) => {
-            var horoscopeText = document.createElement('p');
+            var horoscopeText = document.getElementById('horoscope-output');
             horoscopeText.innerText = json;
-            document.getElementById('horoscope-output').appendChild(horoscopeText);
         });
 }
 
