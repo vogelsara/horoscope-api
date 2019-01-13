@@ -15,7 +15,9 @@ function viewHoroscope() {
 }
 
 function addHoroscope() {
+
     var formData = new FormData();
+
     formData.append('birthday', document.getElementById('birthdayInput').value);
     formData.append('horoscope-input', document.getElementById('horoscope-input').value);
 
@@ -30,7 +32,6 @@ function updateHoroscope() {
 
     var birthday = document.getElementById('birthdayInput').value;
     var horoscopeText = document.getElementById('horoscope-input').value;
-
     var queryString = "birthday="+birthday+"&horoscope-input="+horoscopeText;
 
     fetch("/updateHoroscope.php", {
@@ -44,7 +45,6 @@ function updateHoroscope() {
 function deleteHoroscope() {
     
     var birthday = document.getElementById('birthdayInput').value;
-
     var queryString = "birthday="+birthday;
 
     fetch("/deleteHoroscope.php", {
@@ -61,6 +61,7 @@ function deleteHoroscope() {
 }
 
 function updateButtons() {
+
     var birthday = document.getElementById('birthdayInput').value;
 
     fetch("/viewHoroscope.php?birthday="+birthday, {
@@ -69,9 +70,11 @@ function updateButtons() {
         })
         .then((response) => response.json())
         .then((json) => {
+
             var addHoroscopeButton = document.getElementById('addHoroscopeButton');
             var updateHoroscopeButton = document.getElementById('updateHoroscopeButton');
             var deleteHoroscopeButton = document.getElementById('deleteHoroscopeButton');
+
             if (json == "") {
                 addHoroscopeButton.disabled = false;
                 updateHoroscopeButton.disabled = true;
