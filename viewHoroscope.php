@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     } else {
         echo json_encode("");
     }
+} else {
+    http_response_code(400);
 }
 
 traceSession();

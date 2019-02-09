@@ -16,6 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo json_encode(true);
         }
     }
+} else {
+    http_response_code(400);
 }
 
 ?>

@@ -14,6 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
         error_log("deleteHoroscope.php: NOT isset");
         echo json_encode(false);
     }
+} else {
+    http_response_code(400);
 }
 
 traceSession();
