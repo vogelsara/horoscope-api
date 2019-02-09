@@ -1,4 +1,4 @@
-function viewHoroscope() {
+function updatePage() {
 
     var birthday = document.getElementById('birthdayInput').value;
 
@@ -7,26 +7,32 @@ function viewHoroscope() {
         })
         .then((response) => response.json())
         .then((json) => {
-
-            var addHoroscopeButton = document.getElementById('addHoroscopeButton');
-            var updateHoroscopeButton = document.getElementById('updateHoroscopeButton');
-            var deleteHoroscopeButton = document.getElementById('deleteHoroscopeButton');
-
-            if (json == "") {
-                console.log("ipdateButtons json");
-                addHoroscopeButton.disabled = false;
-                updateHoroscopeButton.disabled = true;
-                deleteHoroscopeButton.disabled = true;
-            } else {
-                console.log("ipdateButtons not json");
-                addHoroscopeButton.disabled = true;
-                updateHoroscopeButton.disabled = false;
-                deleteHoroscopeButton.disabled = false;
-            }
-
-            var horoscopeText = document.getElementById('horoscope-output');
-            horoscopeText.innerText = json;
+            updateButtons(json);
+            showSavedHoroscope(json);            
         });
+}
+
+function updateButtons(horoscopeTextJson) {
+    var addHoroscopeButton = document.getElementById('addHoroscopeButton');
+    var updateHoroscopeButton = document.getElementById('updateHoroscopeButton');
+    var deleteHoroscopeButton = document.getElementById('deleteHoroscopeButton');
+
+    if (horoscopeTextJson == "") {
+        console.log("ipdateButtons json");
+        addHoroscopeButton.disabled = false;
+        updateHoroscopeButton.disabled = true;
+        deleteHoroscopeButton.disabled = true;
+    } else {
+        console.log("ipdateButtons not json");
+        addHoroscopeButton.disabled = true;
+        updateHoroscopeButton.disabled = false;
+        deleteHoroscopeButton.disabled = false;
+    }
+}
+
+function showSavedHoroscope(horoscopeTextJson) {
+    var horoscopeText = document.getElementById('horoscope-output');
+    horoscopeText.innerText = horoscopeTextJson;
 }
 
 function addHoroscope() {
@@ -39,7 +45,7 @@ function addHoroscope() {
             method: 'POST',
             credentials: 'include',
             body: formData
-        }).then(viewHoroscope());
+        }).then(updatePage());
 }
 
 function updateHoroscope() {
@@ -51,7 +57,7 @@ function updateHoroscope() {
             method: 'PUT',
             credentials: 'include',
             body: queryString
-        }).then(viewHoroscope());
+        }).then(updatePage());
         
 }
 
@@ -66,7 +72,7 @@ function deleteHoroscope() {
         .then((json) => {
             if (json) {
                 console.log("deleteHoroscope: json");
-                viewHoroscope();
+                updatePage();
             } else {
                 
                 console.log("deleteHoroscope: not json");
