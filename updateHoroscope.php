@@ -8,11 +8,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     parse_str(file_get_contents("php://input"), $_PUT);
 
     $currentHoroscope = calculateHoroscope($_PUT["birthday"]);
-    $horoscopeInputText = $_PUT["horoscope-input"];
 
-    if (isset($_SESSION[$currentHoroscope])) {
-        $_SESSION[$currentHoroscope] = $horoscopeInputText;
-        echo json_encode(true);
+    if (isset($_SESSION["horoscope"])) {
+        if (($currentHoroscope != "no date specified") && ($currentHoroscope != "No horoscope found"))
+        {
+            $_SESSION["horoscope"] = $currentHoroscope;
+            echo json_encode(true);
+        }
     } else {
         echo json_encode(false);
     }

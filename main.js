@@ -1,11 +1,9 @@
-
 function viewHoroscope() {
 
     var birthday = document.getElementById('birthdayInput').value;
 
-    fetch("/viewHoroscope.php?birthday="+birthday, {
-            method: 'GET',
-            credentials: 'include'
+    fetch("/viewHoroscope.php", {
+            method: 'GET'
         })
         .then((response) => response.json())
         .then((json) => {
@@ -19,7 +17,6 @@ function addHoroscope() {
     var formData = new FormData();
 
     formData.append('birthday', document.getElementById('birthdayInput').value);
-    formData.append('horoscope-input', document.getElementById('horoscope-input').value);
 
     fetch("/addHoroscope.php", {
             method: 'POST',
@@ -31,8 +28,7 @@ function addHoroscope() {
 function updateHoroscope() {
 
     var birthday = document.getElementById('birthdayInput').value;
-    var horoscopeText = document.getElementById('horoscope-input').value;
-    var queryString = "birthday="+birthday+"&horoscope-input="+horoscopeText;
+    var queryString = "birthday="+birthday;
 
     fetch("/updateHoroscope.php", {
             method: 'PUT',
@@ -48,13 +44,15 @@ function deleteHoroscope() {
     var queryString = "birthday="+birthday;
 
     fetch("/deleteHoroscope.php", {
-            method: 'DELETE',
-            credentials: 'include',
-            body: queryString
+            method: 'DELETE'
         }).then((response) => response.json())
         .then((json) => {
             if (json) {
+                console.log("deleteHoroscope: json");
                 updateButtons();
+            } else {
+                
+                console.log("deleteHoroscope: not json");
             }
         });
         
@@ -64,9 +62,10 @@ function updateButtons() {
 
     var birthday = document.getElementById('birthdayInput').value;
 
-    fetch("/viewHoroscope.php?birthday="+birthday, {
-            method: 'GET',
-            credentials: 'include'
+    console.log("In updateButtons()");
+
+    fetch("/viewHoroscope.php", {
+            method: 'GET'
         })
         .then((response) => response.json())
         .then((json) => {
@@ -76,10 +75,12 @@ function updateButtons() {
             var deleteHoroscopeButton = document.getElementById('deleteHoroscopeButton');
 
             if (json == "") {
+                console.log("ipdateButtons json");
                 addHoroscopeButton.disabled = false;
                 updateHoroscopeButton.disabled = true;
                 deleteHoroscopeButton.disabled = true;
             } else {
+                console.log("ipdateButtons not json");
                 addHoroscopeButton.disabled = true;
                 updateHoroscopeButton.disabled = false;
                 deleteHoroscopeButton.disabled = false;

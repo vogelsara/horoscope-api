@@ -5,14 +5,8 @@ session_start();
 require 'commonFunctions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $currentHoroscope = calculateHoroscope($_GET["birthday"]);
-
-    if (($currentHoroscope != "no date specified") && ($currentHoroscope != "no horoscope found")) {
-        if (isset($_SESSION[$currentHoroscope])) {
-            echo json_encode($_SESSION[$currentHoroscope]);
-        } else {
-            echo json_encode("");
-        }
+    if (isset($_SESSION["horoscope"])) {
+        echo json_encode($_SESSION["horoscope"]);
     } else {
         echo json_encode("");
     }

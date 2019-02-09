@@ -6,21 +6,15 @@ require 'commonFunctions.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $currentHoroscope = calculateHoroscope($_POST["birthday"]);
-    $horoscopeInputText = $_POST["horoscope-input"];
-
-    if (isHoroscopeAlreadySet($currentHoroscope) == 0) {
-        $_SESSION[$currentHoroscope] = $horoscopeInputText;
-        echo json_encode(true);
-    } else {
+    
+    if (isset($_SESSION["horoscope"])) {
         echo json_encode(false);
-    }
-}
-
-function isHoroscopeAlreadySet($horoscope) {
-    if (isset($_SESSION[$horoscope])) {
-        return 1;
     } else {
-        return 0;
+        if (($currentHoroscope != "no date specified") && ($currentHoroscope != "No horoscope found"))
+        {
+            $_SESSION["horoscope"] = $currentHoroscope;
+            echo json_encode(true);
+        }
     }
 }
 
