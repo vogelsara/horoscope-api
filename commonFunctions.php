@@ -1,17 +1,5 @@
 <?php
 
-function traceAssocArray($assocArray) {
-    foreach ($assocArray as $key => $value) {
-        error_log($key.": ".$value);
-    }
-}
-
-function traceSession() {
-    error_log("SESSION ---------->");
-    traceAssocArray($_SESSION);
-    error_log("SESSION <----------");
-}
-
 function calculateHoroscope($date) {
 
     $subDate = substr($date, -5);

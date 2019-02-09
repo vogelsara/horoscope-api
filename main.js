@@ -18,12 +18,10 @@ function updateButtons(horoscopeTextJson) {
     var deleteHoroscopeButton = document.getElementById('deleteHoroscopeButton');
 
     if (horoscopeTextJson == "") {
-        console.log("ipdateButtons json");
         addHoroscopeButton.disabled = false;
         updateHoroscopeButton.disabled = true;
         deleteHoroscopeButton.disabled = true;
     } else {
-        console.log("ipdateButtons not json");
         addHoroscopeButton.disabled = true;
         updateHoroscopeButton.disabled = false;
         deleteHoroscopeButton.disabled = false;
@@ -71,11 +69,7 @@ function deleteHoroscope() {
         }).then((response) => response.json())
         .then((json) => {
             if (json) {
-                console.log("deleteHoroscope: json");
                 updatePage();
-            } else {
-                
-                console.log("deleteHoroscope: not json");
             }
         });
         
